@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>一起聊 · AI 群聊</title>
+  <link rel="stylesheet" href="/static/style.css?v=2">
+  <script src="/static/app.js?v=2" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <aside>
+      <a class="brand" href="/">一起聊<span>AI</span></a>
+      <div class="intro"><span class="eyebrow">一个群，多一点灵感</span><h1>朋友在，<br>AI 也在。</h1><p>聊想法、做计划，或让 AI<br>帮你把讨论理清楚。</p></div>
+      <form id="join-form">
+        <label for="nickname">你的昵称</label>
+        <input id="nickname" maxlength="24" placeholder="例如：小林" required autocomplete="off">
+        <label for="room-name">群名称</label>
+        <input id="room-name" maxlength="40" value="软件内测群" required autocomplete="off">
+        <button id="join-button" type="submit">进入群聊 <span>↗</span></button>
+      </form>
+      <p class="hint">朋友输入相同群名，就能加入。<br>这是本机公开群原型，没有密码或邀请限制。</p>
+      <div id="room-controls" hidden>
+        <label for="room-select">我的群聊</label>
+        <select id="room-select" aria-label="选择已加入的群"></select>
+        <div class="room-actions"><button id="switch-room" type="button">加入其他群</button><button id="leave" type="button">更换身份</button></div>
+      </div>
+      <div class="aside-footer"><i></i> 人与 AI，一起参与</div>
+    </aside>
+    <section class="chat" aria-label="群聊">
+      <header><div><span class="eyebrow">GROUP CHAT</span><h2 id="room-title">等你加入这场对话</h2></div><span id="connection" class="badge">未连接</span></header>
+      <div class="ai-note"><span class="ai-icon">✦</span><p><strong>给讨论加一点 AI</strong><br>输入 <b>@AI</b> 提问，它会结合当前群的聊天记录回答。</p></div>
+      <button id="older" class="text-button" type="button" hidden>加载更早消息</button>
+      <div id="messages" role="log" aria-label="聊天记录" aria-live="polite"><div class="empty">从一句「你好」开始。<small>进入群聊后，消息会出现在这里。</small></div></div>
+      <div id="notice" role="status"></div>
+      <form id="message-form">
+        <div id="quote-preview" class="composer-preview" hidden><span id="quote-text"></span><button id="cancel-quote" type="button" aria-label="取消引用">×</button></div>
+        <div id="image-preview" class="composer-preview" hidden><img id="selected-image" alt="待发送图片"><span id="image-status"></span><button id="cancel-image" type="button" aria-label="取消图片">×</button></div>
+        <label class="sr-only" for="message">消息内容</label>
+        <textarea id="message" maxlength="4000" rows="2" placeholder="说点什么，或 @AI 一起讨论…" disabled></textarea>
+        <input id="image-file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+        <div class="composer-bottom"><div class="tools"><button id="attach" type="button" disabled>图片</button><span class="keyboard-hint">Enter 发送 · Shift + Enter 换行</span></div><button id="send" disabled>发送 ↑</button></div>
+      </form>
+      <footer>聊天记录自动保存 · AI 参考最近 40 条文字消息</footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+services:
+  chat:
+    build: .
+    image: together-chat:local
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8001:8000"
+    volumes:
+      - chat-data:/app/data
+      - ./SOFTWARE_GUIDE.md:/app/SOFTWARE_GUIDE.md:ro
+    stop_grace_period: 30s
+
+volumes:
+  chat-data:

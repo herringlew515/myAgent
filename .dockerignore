@@ -1,0 +1,12 @@
+# Explicit allowlist: keep secrets, local databases and unrelated files out of the build context.
+**
+!Dockerfile
+!.dockerignore
+!requirements.txt
+!agent.py
+!server.py
+!storage.py
+!image_upload.py
+!SOFTWARE_GUIDE.md
+!static/
+!static/**
